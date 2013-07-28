@@ -10,6 +10,11 @@
   git "dotfiles" do
     destination "/home/#{target_user}/dotfiles"
     repository "https://github.com/onjiro/dotfiles.git"
+    enable_submodules true
     user target_user
+  end
+
+  execute "setup" do
+    command "sudo -u #{target_user} /home/#{target_user}/dotfiles/setup.sh"
   end
 end
